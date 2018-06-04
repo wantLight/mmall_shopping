@@ -2,7 +2,6 @@ package com.mmall.service.test;
 
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
-import com.mmall.common.ServerResponse;
 import com.mmall.service.IProductService;
 import com.mmall.test.TestBase;
 import org.junit.Test;

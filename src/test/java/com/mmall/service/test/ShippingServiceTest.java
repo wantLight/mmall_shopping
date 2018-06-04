@@ -1,8 +1,6 @@
 package com.mmall.service.test;
 
 import com.github.pagehelper.PageInfo;
-import com.mmall.common.ServerResponse;
-import com.mmall.pojo.Shipping;
 import com.mmall.service.impl.ShippingServiceImpl;
 import com.mmall.test.TestBase;
 import org.apache.commons.lang.builder.ToStringBuilder;

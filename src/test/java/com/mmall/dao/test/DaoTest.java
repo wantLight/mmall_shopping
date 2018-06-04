@@ -1,7 +1,5 @@
 package com.mmall.dao.test;
 
-import com.mmall.dao.UserMapper;
-import com.mmall.pojo.User;
 import com.mmall.test.TestBase;
 import org.junit.Ignore;
 import org.junit.Test;
