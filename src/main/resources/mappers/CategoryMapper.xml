@@ -106,6 +106,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.mmall.pojo.Category">
     update mmall_category
     set parent_id = #{parentId,jdbcType=INTEGER},
@@ -116,6 +117,13 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectCategoryChildrenByParentId" resultMap="BaseResultMap" parameterType="int">
+    SELECT
+    <include refid="Base_Column_List"></include>
+    FROM mmall_category
+    WHERE parent_id = #{parentId}
+  </select>
 
 
 

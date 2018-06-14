@@ -20,12 +20,14 @@ public class FTPUtil {
     private static String ftpUser = PropertiesUtil.getProperty("ftp.user");
     private static String ftpPass = PropertiesUtil.getProperty("ftp.pass");
 
+    //构造器
     public FTPUtil(String ip,int port,String user,String pwd){
         this.ip = ip;
         this.port = port;
         this.user = user;
         this.pwd = pwd;
     }
+    //批量上传
     public static boolean uploadFile(List<File> fileList) throws IOException {
         FTPUtil ftpUtil = new FTPUtil(ftpIp,21,ftpUser,ftpPass);
         logger.info("开始连接ftp服务器");
@@ -56,6 +58,7 @@ public class FTPUtil {
                 uploaded = false;
                 e.printStackTrace();
             } finally {
+                //释放链接
                 fis.close();
                 ftpClient.disconnect();
             }
@@ -63,8 +66,7 @@ public class FTPUtil {
         return uploaded;
     }
 
-
-
+    //连接FTP服务器
     private boolean connectServer(String ip,int port,String user,String pwd){
 
         boolean isSuccess = false;
@@ -77,15 +79,6 @@ public class FTPUtil {
         }
         return isSuccess;
     }
-
-
-
-
-
-
-
-
-
 
 
     private String ip;

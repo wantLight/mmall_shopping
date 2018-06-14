@@ -2,6 +2,7 @@ package com.mmall.pojo;
 
 import java.util.Date;
 
+//普通JAVABEANS
 public class User {
     private Integer id;
 
