@@ -164,6 +164,14 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <select id="getByOrderNoUserId" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM mmall_order
+    WHERE order_no = #{orderNo}
+    and user_id = #{userId}
+  </select>
+
 
 
 

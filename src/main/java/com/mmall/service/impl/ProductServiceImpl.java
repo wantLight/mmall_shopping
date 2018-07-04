@@ -1,4 +1,4 @@
-package com.mmall.service;
+package com.mmall.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
