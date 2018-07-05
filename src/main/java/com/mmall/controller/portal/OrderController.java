@@ -51,7 +51,7 @@ public class OrderController {
 
         Map requestParams =  request.getParameterMap();
         //支付宝的参数都在request中
-        for (Iterator iterator = requestParams.keySet().iterator();iterator.hasNext()){
+        for (Iterator iterator = requestParams.keySet().iterator();iterator.hasNext();){
             String name = (String)iterator.next();
             String[] values = (String[]) requestParams.get(name);
             String valueStr = "";
@@ -79,5 +79,27 @@ public class OrderController {
         //todo 驗證各種數據
 
 
+        ServerResponse serverResponse = iOrderService.aliCallback(params);
+        if (serverResponse.isSuccess()){
+            return Const.AlipayCallback.RESPONSE_SUCCESS;
+        }
+        return Const.AlipayCallback.RESPONSE_FAILED;
     }
+
+    @RequestMapping("query_order_pay_status.do")
+    @ResponseBody
+    public ServerResponse<Boolean> queryOrderPayStatus(HttpSession session, Long orderNo){
+        User user = (User)session.getAttribute(Const.CURRENT_USER);
+        if (user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCodel(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+
+        ServerResponse serverResponse = iOrderService.queryOrderPayStatus(user.getId(),orderNo);
+        if (serverResponse.isSuccess()){
+            return ServerResponse.createBySuccess(true);
+        }
+        //查询是否支付成功
+        return ServerResponse.createBySuccess(false);
+    }
+
 }
