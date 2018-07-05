@@ -70,6 +70,26 @@ public class Const {
             return code;
         }
     }
+
+    public enum PaymentTypeEnum{
+        ONLINE_PAY("在线支付",1);
+
+        PaymentTypeEnum(String value, int code) {
+            this.value = value;
+            this.code = code;
+        }
+
+        private String value;
+        private int code;
+
+        public String getValue() {
+            return value;
+        }
+        public int getCode() {
+            return code;
+        }
+    }
+
     public  interface AlipayCallback{
         String TRADE_STATUS_WAIT_BUYER_PAY = "WAIT_BUYER_PAY";
         String TRADE_STATUS_TRADE_SUCCESS = "TRADE_SUCCESS";
