@@ -30,7 +30,7 @@ public class UserServiceImpl implements IUserService {
         if (resultCount == 0){
             return ServerResponse.createByErrorMessage("用户名不存在！");
         }
-        //todo 密码登录MD5
+        //密码登录MD5
         String md5Pass = MD5Util.MD5EncodeUtf8(password);
         User user = userMapper.selectLogin(username,md5Pass);
         if (user == null){
